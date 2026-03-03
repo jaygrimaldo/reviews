@@ -428,7 +428,7 @@
   <!-- Header -->
   <div class="header">
     <div class="headshot-wrapper">
-      <div class="headshot-placeholder">JR</div>
+      <img src="2026_new_headshot.jpg" alt="J.R. Grimaldo" style="width: 100%; height: 100%; object-fit: cover;">
     </div>
     <h1>J.R. Grimaldo</h1>
     <div class="brokerage">NorthGroup Real Estate</div>
@@ -523,7 +523,7 @@
       </div>
       <div class="platform-info">
         <div class="platform-name">Facebook</div>
-        <div class="platform-hint">Share with your network</div>
+        <div class="platform-hint">Opens a text with the link and your review to paste</div>
       </div>
       <span class="copied-badge">✓ Copied!</span>
       <svg class="platform-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -601,7 +601,8 @@
       // Open platform after a brief delay so user sees the feedback
       setTimeout(() => {
         if (platform === 'facebook') {
-          window.location.href = PLATFORM_URLS[platform];
+          const smsBody = encodeURIComponent("Here's the link to leave a Facebook review for J.R. Grimaldo:\n\nhttps://www.facebook.com/jrresales/reviews\n\nSend this to yourself, then tap the link above to open the reviews page.");
+          window.location.href = 'sms:?&body=' + smsBody;
         } else {
           window.open(PLATFORM_URLS[platform], '_blank');
         }
@@ -620,7 +621,8 @@
       showToast('Review copied! Paste it on ' + PLATFORM_NAMES[platform]);
       setTimeout(() => {
         if (platform === 'facebook') {
-          window.location.href = PLATFORM_URLS[platform];
+          const smsBody = encodeURIComponent("Here's the link to leave a Facebook review for J.R. Grimaldo:\n\nhttps://www.facebook.com/jrresales/reviews\n\nSend this to yourself, then tap the link above to open the reviews page.");
+          window.location.href = 'sms:?&body=' + smsBody;
         } else {
           window.open(PLATFORM_URLS[platform], '_blank');
         }

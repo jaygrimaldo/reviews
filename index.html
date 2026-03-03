@@ -484,21 +484,6 @@
       <svg class="platform-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
 
-    <!-- Facebook -->
-    <button class="platform-btn" onclick="copyAndOpen('facebook')" id="btn-facebook">
-      <div class="platform-icon facebook">
-        <svg viewBox="0 0 24 24">
-          <path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-        </svg>
-      </div>
-      <div class="platform-info">
-        <div class="platform-name">Facebook</div>
-        <div class="platform-hint">Share with your network</div>
-      </div>
-      <span class="copied-badge">✓ Copied!</span>
-      <svg class="platform-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </button>
-
     <!-- Zillow -->
     <button class="platform-btn" onclick="copyAndOpen('zillow')" id="btn-zillow">
       <div class="platform-icon zillow">
@@ -528,6 +513,21 @@
       <span class="copied-badge">✓ Copied!</span>
       <svg class="platform-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </button>
+
+    <!-- Facebook (Last — navigates away from form) -->
+    <button class="platform-btn" onclick="copyAndOpen('facebook')" id="btn-facebook">
+      <div class="platform-icon facebook">
+        <svg viewBox="0 0 24 24">
+          <path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </div>
+      <div class="platform-info">
+        <div class="platform-name">Facebook</div>
+        <div class="platform-hint">Share with your network</div>
+      </div>
+      <span class="copied-badge">✓ Copied!</span>
+      <svg class="platform-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
   </div>
 
   <!-- Footer -->
@@ -546,7 +546,7 @@
 <script>
   const PLATFORM_URLS = {
     google: 'https://g.page/r/CUwQGgQQgRcUEAE/review',
-    facebook: 'fb-review.html',
+    facebook: 'https://m.facebook.com/jrresales/reviews',
     zillow: 'https://www.zillow.com/profile/Jose%20Grimaldo3',
     realtor: 'https://www.realtor.com/realestateagents/577fd169e845ba0100dbf61e'
   };
@@ -598,9 +598,13 @@
       // Show toast
       showToast('Review copied! Paste it on ' + PLATFORM_NAMES[platform]);
 
-      // Open platform in new tab after a brief delay so user sees the feedback
+      // Open platform after a brief delay so user sees the feedback
       setTimeout(() => {
-        window.open(PLATFORM_URLS[platform], '_blank');
+        if (platform === 'facebook') {
+          window.location.href = PLATFORM_URLS[platform];
+        } else {
+          window.open(PLATFORM_URLS[platform], '_blank');
+        }
       }, 600);
     }).catch(() => {
       // Fallback for older browsers
@@ -615,7 +619,11 @@
       setTimeout(() => btn.classList.remove('copied'), 3000);
       showToast('Review copied! Paste it on ' + PLATFORM_NAMES[platform]);
       setTimeout(() => {
-        window.open(PLATFORM_URLS[platform], '_blank');
+        if (platform === 'facebook') {
+          window.location.href = PLATFORM_URLS[platform];
+        } else {
+          window.open(PLATFORM_URLS[platform], '_blank');
+        }
       }, 600);
     });
   }

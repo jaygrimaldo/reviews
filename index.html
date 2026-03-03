@@ -428,7 +428,7 @@
   <!-- Header -->
   <div class="header">
     <div class="headshot-wrapper">
-      <img src="2026_new_headshot.jpg" alt="J.R. Grimaldo" style="width: 100%; height: 100%; object-fit: cover;">
+      <img src="2026%20new%20headshot.jpg" alt="J.R. Grimaldo" style="width: 100%; height: 100%; object-fit: cover;">
     </div>
     <h1>J.R. Grimaldo</h1>
     <div class="brokerage">NorthGroup Real Estate</div>
@@ -601,8 +601,8 @@
       // Open platform after a brief delay so user sees the feedback
       setTimeout(() => {
         if (platform === 'facebook') {
-          const smsBody = encodeURIComponent("Here's the link to leave a Facebook review for J.R. Grimaldo:\n\nhttps://www.facebook.com/jrresales/reviews\n\nSend this to yourself, then tap the link above to open the reviews page.");
-          window.location.href = 'sms:?&body=' + smsBody;
+          const smsBody = encodeURIComponent("Leave a Facebook review for J.R. Grimaldo:\n\nTap this link:\nhttps://m.facebook.com/jrresales/reviews\n\nIf it opens to my main page instead of reviews, scroll down and tap Reviews.\n\n--- Your Review (copy & paste) ---\n" + reviewText);
+          window.location.href = 'sms:&body=' + smsBody;
         } else {
           window.open(PLATFORM_URLS[platform], '_blank');
         }
@@ -621,8 +621,8 @@
       showToast('Review copied! Paste it on ' + PLATFORM_NAMES[platform]);
       setTimeout(() => {
         if (platform === 'facebook') {
-          const smsBody = encodeURIComponent("Here's the link to leave a Facebook review for J.R. Grimaldo:\n\nhttps://www.facebook.com/jrresales/reviews\n\nSend this to yourself, then tap the link above to open the reviews page.");
-          window.location.href = 'sms:?&body=' + smsBody;
+          const smsBody = encodeURIComponent("Leave a Facebook review for J.R. Grimaldo:\n\nTap this link:\nhttps://m.facebook.com/jrresales/reviews\n\nIf it opens to my main page instead of reviews, scroll down and tap Reviews.\n\n--- Your Review (copy & paste) ---\n" + reviewText);
+          window.location.href = 'sms:&body=' + smsBody;
         } else {
           window.open(PLATFORM_URLS[platform], '_blank');
         }
